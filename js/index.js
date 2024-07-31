@@ -50,13 +50,14 @@ function scrollBottom(){
     document.querySelector('.button-container').style.display = 'block'
   }
 }
-// TODO：测试的文件地址
+// TODO:测试的文件地址
 const url = './old1.pdf';   //大文件
 // const url = params.FilePath;  //真实文件
 // const url = './old.pdf';  //小文件
 
-// TODO: 服务器接口地址(测试环境)
-let serverURL = 'https://test.lvshikeji.cn/api/card/updateEsignRecordByReceiver'
+// TODO: 服务器接口地址
+let serverURL = 'https://test.lvshikeji.cn/api/card/updateEsignRecordByReceiver'      //测试环境
+// let serverURL = 'https://dlmp.lvshikeji.cn/api/card/updateEsignRecordByReceiver'   //正式环境
 
 
 let totalPages = 0;
@@ -343,7 +344,7 @@ function stopDrawing(e) {
 }
 
 
-//TODO:更改后的
+
 function downloadPDF() {
   const canvasContainer = document.getElementById('canvasContainer');
   const canvasElements = canvasContainer.getElementsByTagName('canvas');
@@ -393,9 +394,11 @@ function uploadInChunks(blob, chunkSize = 1024 * 1024) { // 1MB chunks
     formData.append('file', chunk, `chunk_${chunkIndex}.pdf`);
     formData.append('chunkIndex', chunkIndex);
     formData.append('totalChunks', totalChunks);
+
     // TODO:合同地址
     // formData.append('url', 'https://testimage.lvshikeji.cn/esign/1817477257149558784.pdf');
     formData.append('url', params.FilePath);
+
     formData.append('esign_id', params.esign_id);
     formData.append('from_user_id', params.from_user_id);
     formData.append('user_id', params.user_id);
