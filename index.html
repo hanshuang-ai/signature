@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+  <title></title>
+  <script src="./js/size.js"></script>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <div class="loadingPngContainer">
+    <img src="./loading.png" alt="" class="loadingPng">
+    <div class="jiazaizhong">加载中，请稍后...</div>
+  </div>
+  <div class="mainBody">
+    <div id="canvasContainer_">
+      <div id="canvasContainer"></div>
+    </div>
+    <div class="signature-container" id="signatureContainer">
+      <div class="SigningContainer">
+        <div class="canvasContainer">
+          <div class="area">签名区域</div>
+          <canvas id="myCanvas"></canvas>
+          <canvas id="signaturePad" disable-scroll="true"></canvas>
+          <div class="buttons">
+            <button onclick="clearSignature()" class="regenerate">重签</button>
+            <button onclick="saveSignature()" class="witnessing">确认</button>
+          </div>
+          <div class="notice">请在空白区域内横向书写</div>
+        </div>
+      </div>
+    </div>
+    <div class="_SignatureEntryContainer">
+      <div class="_SignatureEntryContainer_">
+        <div class="SignatureEntryContainer">
+          <div class="Replenishment" onclick="showSignaturePad()">
+            签名(待对方补充)
+          </div>
+          <div class="imgpreviewContainer">
+            <img src="./delete.png" alt="" class="deleteIcon" onclick="DeleteSignature()">
+            <img src="" alt="" class="imgpreview">
+          </div>
+        </div>
+      </div>
+      <div class="here">
+        请点击此处进行签约
+      </div>
+    </div>
+    <!-- <div class="total">
+    共 <span>1</span> 处签名，已完成 <span>0</span> 处，剩余 <span>1</span> 处
+  </div> -->
+    <div class="button-container SignACcontract" onclick="showSignaturePad()">签约</div>
+    <div class="button-container submit" onclick="submit()">提交</div>
+  </div>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script> -->
+  <script src="./js/pdf.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.worker.min.js"></script> -->
+  <script src="./js/pdf.worker.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script> -->
+  <script src="./js/jspdf.js"></script>
+  <script src="./js/index.js"></script>
+  <script src="./js/jq.js"></script>
+  <!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script> -->
+</body>
+
+</html>
