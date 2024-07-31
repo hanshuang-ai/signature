@@ -38,14 +38,14 @@ console.log(params, 'params')
 
 // 滚动到底部显示签约按钮
 const canvasContainer = document.getElementById('canvasContainer');
-if (params.type == 'sign') {
-  canvasContainer.addEventListener('scroll', scrollBottom);
-}
 function scrollBottom(){
+  console.log('1');
   const scrollTop = canvasContainer.scrollTop;
   const scrollHeight = canvasContainer.scrollHeight;
   const clientHeight = canvasContainer.clientHeight;
-  if (scrollTop + clientHeight >= scrollHeight) {
+  // console.log(scrollTop + clientHeight);
+  // console.error(scrollHeight)
+  if (scrollTop + clientHeight >= scrollHeight-10) {
     console.log('Scrolled to bottom!');
     document.querySelector('.button-container').style.display = 'block'
   }
@@ -87,6 +87,8 @@ async function renderAllPages() {
         message: "滑动到底部进行签约",
         time: 1000 * 1
       })
+      console.log(canvasContainer,'canvasContainer');
+      canvasContainer.addEventListener('scroll', scrollBottom);
     }
   }
 }
@@ -420,20 +422,26 @@ function uploadInChunks(blob, chunkSize = 1024 * 1024) { // 1MB chunks
           document.querySelector('.loadingPngContainer').style.display = 'none';
           document.querySelector('.submit').style.display = 'none';
           document.querySelector('.mainBody').style.display = 'block';
-          canvasContainer.removeEventListener('scroll', () => { });
           // 这里可以添加上传完成后的操作
           toast({
             message: "上传成功",
             time: 1000 * 1
           })
-
-          // canvasContainer.addEventListener('scroll', scrollBottom);
           canvasContainer.removeEventListener('scroll', scrollBottom)
         }
       },
       error: function (xhr, status, error) {
         console.error('Error uploading chunk:', error);
         // 这里可以添加错误处理逻辑，比如重试
+        document.querySelector('.loadingPngContainer').style.display='none'
+        toast({
+          message: "签约失败，请重新提交",
+          time: 1000 * 3
+        })
+        // setTimeout(()=>{
+          document.querySelector('.mainBody').style.display = 'block'
+        // },1000)
+
       }
     });
   }
