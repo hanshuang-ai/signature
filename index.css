@@ -347,6 +347,7 @@ body {
 
 /* loading */
 .loadingPngContainer {
+  margin-left: -30rem;
 	text-align: center;
 	box-sizing: border-box;
 	overflow: hidden;
